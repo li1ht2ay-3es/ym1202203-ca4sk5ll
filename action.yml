@@ -38,11 +38,6 @@ runs:
       arch: ${{ inputs.arch }}
 
 
-  - uses: li1ht2ay-3es/cc1ch2-ac3io4@custom
-    with:
-      key: ${{ inputs.arch }}
-
-
   - shell: bash
     run: |
       merge () {
@@ -64,24 +59,31 @@ runs:
       CXX: ccache ${{ env.MINGW_CXX }}
     shell: bash
     run: |
-      make platform="win"
-
+      # make platform="win"
 
 
   - if: inputs.arch == 'so64'
     working-directory: ${{ github.workspace }}
     env:
-      CC: ccache gcc
-      CXX: ccache g++
+      MARSDEV: ${{ github.workspace }}/mars
     shell: bash
     run: |
-      make platform="unix"
+      # wget https://github.com/andwn/marsdev/releases/download/2017.09.12/marsdev-nosh-nogdb.tar.bz2
+      # tar -xvf marsdev-nosh-nogdb.tar.bz2
 
+      # wget https://github.com/andwn/marsdev/releases/download/2018.01/mars-2018jan-linux.zip
+      # 7z x mars-2018jan-linux.zip
+
+      wget https://github.com/andwn/marsdev/releases/download/2021.04/mars-linux-x86_64-2021.04.tar.xz
+      tar -xvf mars-linux-x86_64-2021.04.tar.xz
+
+      chmod 777 -R .
+      ./mars/m68k-elf/bin/m68k-elf-gcc --version
+      make
 
 
   - uses: actions/upload-artifact@main
     with:
-      name: program_${{ inputs.arch }}
+      name: ym2020_${{ inputs.arch }}
       path: |
-        ${{ github.workspace }}/**.dll
-        ${{ github.workspace }}/**.so
+        ${{ github.workspace }}/**.bin
