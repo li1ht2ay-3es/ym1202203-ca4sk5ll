@@ -23,6 +23,7 @@ const struct
     char region[16];                /* Country Support (16) */
 } rom_header = {
     "SEGA MEGA DRIVE ",
+/*
     "(C)CSET 2021.AUG",
     "YM 2020                                         ",
     "YM 2020                                         ",
@@ -39,5 +40,23 @@ const struct
     0x002001FF,
     "            ",
     "                                        ",
+    "JUE             "
+*/
+    "(C)SGDK 2020    ",
+    "SAMPLE PROGRAM                                  ",
+    "SAMPLE PROGRAM                                  ",
+    "GM 00000000-00",
+    0x0000,
+    "JD              ",
+    0x00000000,
+    0x003FFFFF,
+    0x00FF0000,
+    0x00FFFFFF,
+    "RA",
+    0xF820,
+    0x00200000,
+    0x002001FF,
+    "            ",
+    "DEMONSTRATION PROGRAM                   ",
     "JUE             "
 };
