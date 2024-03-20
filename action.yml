@@ -87,8 +87,17 @@ runs:
       chmod 777 -R .
       sh generate_wine.sh
 
+      cd ${{ github.workspace }}
       make GDK=$PATH_TO_SGDK -f $PATH_TO_SGDK/makefile_wine.gen
 
+
+  - if: inputs.arch == 'so64'
+    working-directory: ${{ github.workspace }}
+    env:
+      MARSDEV: ${{ github.workspace }}/mars
+      PATH_TO_SGDK: ${{ github.workspace }}/sgdk165
+    shell: bash
+    run: |
       # wget https://github.com/andwn/marsdev/releases/download/2017.09.12/marsdev-nosh-nogdb.tar.bz2
       # tar -xvf marsdev-nosh-nogdb.tar.bz2
 
