@@ -69,6 +69,13 @@ runs:
       PATH_TO_SGDK: ${{ github.workspace }}/sgdk165
     shell: bash
     run: |
+      sudo dpkg --add-architecture i386
+      wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+      sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport
+      sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu $(lsb_release -cs) main"
+      sudo apt install --install-recommends winehq-stable
+
+
       mkdir sgdk165
       cd sgdk165
       wget https://github.com/Stephane-D/SGDK/releases/download/v1.65/sgdk165.7z
