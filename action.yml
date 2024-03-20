@@ -74,8 +74,11 @@ runs:
       # wget https://github.com/andwn/marsdev/releases/download/2018.01/mars-2018jan-linux.zip
       # 7z x mars-2018jan-linux.zip
 
-      wget https://github.com/andwn/marsdev/releases/download/2021.04/mars-linux-x86_64-2021.04.tar.xz
-      tar -xvf mars-linux-x86_64-2021.04.tar.xz
+      wget https://github.com/andwn/marsdev/releases/download/2020.01/mars-linux64-2020jun5.tar.xz
+      tar -xvf mars-linux64-2020jun5.tar.xz
+
+      # wget https://github.com/andwn/marsdev/releases/download/2021.04/mars-linux-x86_64-2021.04.tar.xz
+      # tar -xvf mars-linux-x86_64-2021.04.tar.xz
 
       # wget https://github.com/andwn/marsdev/releases/download/2022.09/mars-2022.09-linux-x64.tar.xz
       # tar -xvf mars-2022.09-linux-x64.tar.xz
