@@ -37,10 +37,10 @@ jobs:
 
         mkdir sgdk
         cd sgdk
-        wget https://github.com/Stephane-D/SGDK/releases/download/v1.62/sgdk162.7z
-        7z x sgdk162.7z
-        # wget https://github.com/Stephane-D/SGDK/releases/download/v1.65/sgdk165.7z
-        # 7z x sgdk165.7z
+        # wget https://github.com/Stephane-D/SGDK/releases/download/v1.62/sgdk162.7z
+        # 7z x sgdk162.7z
+        wget https://github.com/Stephane-D/SGDK/releases/download/v1.65/sgdk165.7z
+        7z x sgdk165.7z
         chmod 777 -R .
         cd bin
 
