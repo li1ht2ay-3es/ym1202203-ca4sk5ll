@@ -123,3 +123,4 @@ runs:
       name: ym2020_${{ inputs.arch }}
       path: |
         ${{ github.workspace }}/**.bin
+        ${{ github.workspace }}/out/rom.out
