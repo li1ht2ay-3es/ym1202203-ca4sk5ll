@@ -73,11 +73,9 @@ runs:
       cd sgdk165
       wget https://github.com/Stephane-D/SGDK/releases/download/v1.65/sgdk165.7z
       7z x sgdk165.7z
-      cd..
+      cd bin
 
       wget https://github.com/Franticware/SGDK_wine/raw/e3716d4000f24e914f500070be210c4ba19b2258/generate_wine.sh
-      cp generate_wine.sh $PATH_TO_SGDK/bin
-      cd $PATH_TO_SGDK/bin
       sh generate_wine.sh
 
       # wget https://github.com/andwn/marsdev/releases/download/2017.09.12/marsdev-nosh-nogdb.tar.bz2
