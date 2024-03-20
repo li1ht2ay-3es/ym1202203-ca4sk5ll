@@ -17,8 +17,41 @@ jobs:
 
     steps:
 
-    - uses: li1ht2ay-3es/ym1202203-ca4sk5ll@build
+    - uses: li1ht2ay-3es/gi1-ac2io3s@checkout-branch
       with:
-        arch: ${{ matrix.arch }}
-
         token: ${{ secrets.token }}
+        auto: true
+
+
+    - if: matrix.arch == 'so64'
+      working-directory: ${{ github.workspace }}
+      env:
+        PATH_TO_SGDK: ${{ github.workspace }}/sgdk165
+      shell: bash
+      run: |
+        sudo dpkg --add-architecture i386
+        wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+        sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport
+        sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu $(lsb_release -cs) main"
+        sudo apt install --install-recommends winehq-stable
+
+        mkdir sgdk165
+        cd sgdk165
+        wget https://github.com/Stephane-D/SGDK/releases/download/v1.65/sgdk165.7z
+        7z x sgdk165.7z
+        chmod 777 -R .
+        cd bin
+
+        wget https://github.com/Franticware/SGDK_wine/raw/e3716d4000f24e914f500070be210c4ba19b2258/generate_wine.sh
+        chmod 777 -R .
+        sh generate_wine.sh
+
+        cd ${{ github.workspace }}
+        make GDK=$PATH_TO_SGDK -f $PATH_TO_SGDK/makefile_wine.gen
+
+
+    - uses: actions/upload-artifact@main
+      with:
+        name: ym2020_${{ inputs.arch }}
+        path: |
+          ${{ github.workspace }}/out/rom.out
