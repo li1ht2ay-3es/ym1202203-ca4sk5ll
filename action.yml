@@ -66,8 +66,20 @@ runs:
     working-directory: ${{ github.workspace }}
     env:
       MARSDEV: ${{ github.workspace }}/mars
+      PATH_TO_SGDK: ${{ github.workspace }}/sgdk165
     shell: bash
     run: |
+      mkdir sgdk165
+      cd sgdk165
+      wget https://github.com/Stephane-D/SGDK/releases/download/v1.65/sgdk165.7z
+      7z x -xvf sgdk165.7z
+      cd..
+
+      wget https://github.com/Franticware/SGDK_wine/raw/e3716d4000f24e914f500070be210c4ba19b2258/generate_wine.sh
+      cp generate_wine.sh $PATH_TO_SGDK/bin
+      cd $PATH_TO_SGDK/bin
+      sh generate_wine.sh
+
       # wget https://github.com/andwn/marsdev/releases/download/2017.09.12/marsdev-nosh-nogdb.tar.bz2
       # tar -xvf marsdev-nosh-nogdb.tar.bz2
 
@@ -77,8 +89,8 @@ runs:
       # wget https://github.com/andwn/marsdev/releases/download/2020.01/mars-linux64-2020jun5.tar.xz
       # tar -xvf mars-linux64-2020jun5.tar.xz
 
-      wget https://github.com/andwn/marsdev/releases/download/2021.04/mars-linux-x86_64-2021.04.tar.xz
-      tar -xvf mars-linux-x86_64-2021.04.tar.xz
+      # wget https://github.com/andwn/marsdev/releases/download/2021.04/mars-linux-x86_64-2021.04.tar.xz
+      # tar -xvf mars-linux-x86_64-2021.04.tar.xz
 
       # wget https://github.com/andwn/marsdev/releases/download/2022.09/mars-2022.09-linux-x64.tar.xz
       # tar -xvf mars-2022.09-linux-x64.tar.xz
